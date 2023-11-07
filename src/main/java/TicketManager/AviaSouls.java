@@ -16,9 +16,7 @@ public class AviaSouls {
      */
     private Ticket[] addToArray(Ticket[] current, Ticket ticket) {
         Ticket[] tmp = new Ticket[current.length + 1];
-        for (int i = 0; i < current.length; i++) {
-            tmp[i] = current[i];
-        }
+        System.arraycopy(current, 0, tmp, 0, current.length);
         tmp[tmp.length - 1] = ticket;
         return tmp;
     }
@@ -56,7 +54,7 @@ public class AviaSouls {
         return result;
     }
 
-    public Ticket[] search(String from, String to, Comparator<Ticket> comparator) {
+    public Ticket[] searchAndSortBy(String from, String to, Comparator<Ticket> comparator) {
         Ticket[] result = new Ticket[0]; // массив для ответа
         for (Ticket ticket : tickets) { // перебираем все билеты
             if (ticket.getFrom().equals(from)) { // совпадает аэропорт вылета

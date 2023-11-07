@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Assertions;
 
 import java.util.Comparator;
 
-public class TicketManagerTest {
+public class AviaSoulsTest {
     @Test
     public void testSortFewTickets() {
         AviaSouls manager = new AviaSouls();
@@ -57,6 +57,7 @@ public class TicketManagerTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
     @Test
     public void testSortOneTickets() {
         AviaSouls manager = new AviaSouls();
@@ -82,6 +83,7 @@ public class TicketManagerTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
     @Test
     public void testSortTicketsWithComparator() {
         AviaSouls manager = new AviaSouls();
@@ -103,11 +105,12 @@ public class TicketManagerTest {
         manager.add(Ticket8);
         Comparator<Ticket> comparator = new TicketTimeComparator();
 
-        Ticket[] actual = manager.search("MSK", "SPB", comparator);
+        Ticket[] actual = manager.searchAndSortBy("MSK", "SPB", comparator);
         Ticket[] expected = {Ticket1, Ticket5, Ticket6, Ticket3};
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
     @Test
     public void testSortZeroTicketsWithComparator() {
         AviaSouls manager = new AviaSouls();
@@ -129,11 +132,12 @@ public class TicketManagerTest {
         manager.add(Ticket8);
         Comparator<Ticket> comparator = new TicketTimeComparator();
 
-        Ticket[] actual = manager.search("MSK", "NN", comparator);
+        Ticket[] actual = manager.searchAndSortBy("MSK", "NN", comparator);
         Ticket[] expected = {};
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
     @Test
     public void testSortOneTicketsWithComparator() {
         AviaSouls manager = new AviaSouls();
@@ -155,7 +159,7 @@ public class TicketManagerTest {
         manager.add(Ticket8);
         Comparator<Ticket> comparator = new TicketTimeComparator();
 
-        Ticket[] actual = manager.search("NN", "SPB", comparator);
+        Ticket[] actual = manager.searchAndSortBy("NN", "SPB", comparator);
         Ticket[] expected = {Ticket8};
 
         Assertions.assertArrayEquals(expected, actual);
